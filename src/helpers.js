@@ -1,3 +1,3 @@
-export const removeCommas = str => str.replace(/,/g, '');
+export const removeCommas = str => typeof str == 'string' ? Number(str.replace(/,/g, '')) : str;
 
-export const removeNonNumeric = str => str.replace(/[^0-9.]/g, '');
+export const removeNonNumeric = str => typeof str == 'string' ? Number(str.replace(/[^0-9.]/g, '')) : str;

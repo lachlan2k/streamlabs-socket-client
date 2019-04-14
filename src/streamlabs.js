@@ -103,7 +103,7 @@ class StreamlabsClient extends EventEmitter {
         if (isResub) {
           this.emit('resubscription', {
             ...message,
-            months: Number(removeCommas(message.months)) || 0,
+            months: removeCommas(message.months) || 0,
             formattedMonths: message.months,
             isTest,
           });
@@ -120,7 +120,7 @@ class StreamlabsClient extends EventEmitter {
       case 'donation': {
         this.emit('donation', {
           ...message,
-          amount: Number(removeNonNumeric(message.amount)),
+          amount: removeNonNumeric(message.amount),
           formattedAmount: (message.formattedAmount || message.formatted_amount || '').toString(),
           currency: message.currency || 'USD',
           isTest,
@@ -132,7 +132,7 @@ class StreamlabsClient extends EventEmitter {
       case 'host': {
         this.emit('host', {
           ...message,
-          viewers: Number(removeNonNumeric(message.viewers)),
+          viewers: removeNonNumeric(message.viewers),
           formattedViewers: message.viewers.toString(),
           isTest,
         });
@@ -143,7 +143,7 @@ class StreamlabsClient extends EventEmitter {
       case 'bits': {
         this.emit('bits', {
           ...message,
-          amount: Number(removeCommas(message.amount)) || 0,
+          amount: removeCommas(message.amount) || 0,
           formattedAmount: message.amount.toString(),
           isTest: !!message.isTest,
         });
